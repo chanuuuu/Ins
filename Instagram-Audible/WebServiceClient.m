@@ -28,7 +28,7 @@ NSMutableArray *resultArray;
     return _sharedWebServiceClient;
 }
 
-// Initializes the object with prolific web service base url
+// Initializes the object with Instagram API url
 - (instancetype)initWithBaseURL:(NSURL *)url
 {
     self = [super initWithBaseURL:url];
@@ -41,7 +41,7 @@ NSMutableArray *resultArray;
     return self;
 }
 
-// Retrieves All books from Prolific WebService -- request to GET /books
+// Retrieves All Photos from Instagram API
 - (void) retrievePhotos {
     
     [self GET:@"selfie/media/recent?access_token=647785057.1677ed0.4de58c986679455d95d7a74ed8c22d53"
