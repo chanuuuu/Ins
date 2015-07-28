@@ -68,6 +68,8 @@ int columnCount = 0;
                                   
                                   [imageView setImage:image];
                                   
+                                  [imgArray addObject:image];
+                                  
                                   [weakCell setNeedsLayout];
                                   
                                   
@@ -87,11 +89,15 @@ int columnCount = 0;
     fullScreenImageView = [[UIView alloc] initWithFrame: CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height-20 )];
     
     fullScreenImageView.backgroundColor = [UIColor blackColor];
-
-    UIImageView *fullImageView = (UIImageView *)[collectionView viewWithTag: indexPath.row];
+    
+//    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"imgCell" forIndexPath:indexPath];
+//
+//    UIImageView *fullImageView = (UIImageView *)[self.view viewWithTag: indexPath.row];
+    
+    //UIImageView *fullImageView = (UIImageView *)[imgArray objectAtIndex:indexPath.row];
     
     UIImageView *pictureView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 200, 300, 300)];
-    pictureView.image =  fullImageView.image;
+    pictureView.image =  [imgArray objectAtIndex:indexPath.row];  //fullImageView.image;
     
     [fullScreenImageView addSubview:pictureView];
     [self.view addSubview:fullScreenImageView];
@@ -135,6 +141,7 @@ int columnCount = 0;
     
     [self.activityIndicatorView stopAnimating];
     
+    
 }
 
 // Delegate function that gets triggered when there was a problem in retrieving the photos
@@ -154,10 +161,27 @@ int columnCount = 0;
     [fullScreenImageView removeFromSuperview];
 }
 
+- (void) startRefresh {
+    NSLog(@"Inside refresh");
+    wClient = [WebServiceClient sharedWebServiceClient];
+    wClient.delegate = self;
+    [wClient retrievePhotos];
+}
+
+//- (void) viewDidAppear:(BOOL)animated {
+// 
+//    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+//    [refreshControl addTarget:self action:@selector(startRefresh)
+//             forControlEvents:UIControlEventValueChanged];
+//    [_collectionView addSubview:refreshControl];
+//}
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    imgArray = [[NSMutableArray alloc] init];
     
     instagramJSONDic = [NSDictionary new];
     fullScreenImageView = [[UIView alloc] init];

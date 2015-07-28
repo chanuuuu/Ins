@@ -11,7 +11,7 @@
 
 @interface ViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, WebServiceClientDelegate>
 {
-    
+    NSMutableArray *imgArray;
 }
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
