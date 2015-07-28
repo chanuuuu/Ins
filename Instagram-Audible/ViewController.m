@@ -88,7 +88,7 @@ int columnCount = 0;
     
     fullScreenImageView.backgroundColor = [UIColor blackColor];
 
-    UIImageView *fullImageView = (UIImageView *)[self.view viewWithTag: indexPath.row];
+    UIImageView *fullImageView = (UIImageView *)[collectionView viewWithTag: indexPath.row];
     
     UIImageView *pictureView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 200, 300, 300)];
     pictureView.image =  fullImageView.image;

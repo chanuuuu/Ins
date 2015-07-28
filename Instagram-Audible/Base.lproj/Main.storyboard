@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -25,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="imgCell" id="6Vr-wb-am4">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" reuseIdentifier="imgCell" id="6Vr-wb-am4">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -35,9 +36,6 @@
                                         </view>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="28" width="368" height="552"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="RwE-au-8XQ"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="pxW-t0-ykB"/>
@@ -45,17 +43,38 @@
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bDW-DR-lq0" secondAttribute="bottom" constant="8" id="0qH-Xj-J0P"/>
+                            <constraint firstItem="bDW-DR-lq0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="EeG-yR-sYq"/>
+                            <constraint firstItem="bDW-DR-lq0" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="fv0-1h-Lma"/>
+                            <constraint firstItem="bDW-DR-lq0" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="w5Z-J1-bfh"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="bDW-DR-lq0"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="EeG-yR-sYq"/>
+                                <exclude reference="fv0-1h-Lma"/>
+                                <exclude reference="w5Z-J1-bfh"/>
+                                <exclude reference="0qH-Xj-J0P"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="bDW-DR-lq0"/>
                             </mask>
+                            <mask key="constraints">
+                                <include reference="EeG-yR-sYq"/>
+                                <include reference="fv0-1h-Lma"/>
+                                <include reference="w5Z-J1-bfh"/>
+                                <include reference="0qH-Xj-J0P"/>
+                            </mask>
                         </variation>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="bDW-DR-lq0" id="fk4-aP-BIZ"/>
                     </connections>
